@@ -39,6 +39,7 @@ def factor3(N):
 
 
 # to make sure that the the solution output the same result
+# my solution
 print(factor.__doc__)
 print(factor(2))
 print(factor(3))
@@ -48,6 +49,7 @@ print(factor(6))
 print(factor(100))
 print(factor(630))
 
+# my solution2
 print(factor2.__doc__)
 print(factor2(2))
 print(factor2(3))
@@ -57,6 +59,7 @@ print(factor2(6))
 print(factor2(100))
 print(factor2(630))
 
+# instructor solution
 print(factor3.__doc__)
 print(factor3(2))
 print(factor3(3))
@@ -69,10 +72,10 @@ print(factor3(630))
 # compare the performance
 print("My_solution         : ",
       timeit.timeit("factor(1234567891250)",
-                    setup="from __main__ import factor", number=1))
+                    setup="from __main__ import factor", number=100))
 print("My_solution2        : ",
       timeit.timeit("factor2(1234567891250)",
-                    setup="from __main__ import factor2", number=1))
+                    setup="from __main__ import factor2", number=100))
 print("instructor_solution : ",
       timeit.timeit("factor3(1234567891230)",
-                    setup="from __main__ import factor3", number=1))
+                    setup="from __main__ import factor3", number=100))
