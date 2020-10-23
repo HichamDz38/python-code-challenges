@@ -20,23 +20,21 @@ def factor(n):
 def factor2(n):
     """my solution after seeing the instructor solution"""
     for i in range(2, round(n**0.5)+1):
-        print(i)
         if not(n % i):  # we dont need to check if the divider is prime
-            print(i)
             return [i] + factor(n//i)
     return [n]
 
 
-def factor3(n):
+def factor3(N):
     """this is the instructor solution"""
-    factors = []
-    devisor = 2
-    while(devisor <= n):
-        if not(n % devisor):
-            n = n // devisor
-            factors += [devisor]
+    factors = list()
+    divisor = 2
+    while(divisor <= N):
+        if (N % divisor) == 0:
+            factors.append(divisor)
+            N = N / divisor
         else:
-            devisor += 1
+            divisor += 1
     return factors
 
 
@@ -69,9 +67,12 @@ print(factor3(100))
 print(factor3(630))
 
 # compare the performance
-print(timeit.timeit("factor(123456789)",
-                    setup="from __main__ import factor", number=10000))
-print(timeit.timeit("factor2(123456789)",
-                    setup="from __main__ import factor2", number=10000))
-print(timeit.timeit("factor3(123456789)",
-                    setup="from __main__ import factor3", number=10000))
+print("My_solution         : ",
+      timeit.timeit("factor(1234567891250)",
+                    setup="from __main__ import factor", number=1))
+print("My_solution2        : ",
+      timeit.timeit("factor2(1234567891250)",
+                    setup="from __main__ import factor2", number=1))
+print("instructor_solution : ",
+      timeit.timeit("factor3(1234567891230)",
+                    setup="from __main__ import factor3", number=1))

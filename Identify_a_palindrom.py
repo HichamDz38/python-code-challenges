@@ -37,7 +37,11 @@ print(palindrom("Go hang a salami - I'm a lasagna hog"))
 print(palindrom2.__doc__)
 print(palindrom2("Go hang a salami - I'm a lasagna hog"))
 
-print(timeit.timeit('palindrom("Go hang a salami - I\'m a lasagna hog")',
-                    setup="from __main__ import palindrom", number=10000))
-print(timeit.timeit('palindrom2("Go hang a salami - I\'m a lasagna hog")',
-                    setup="from __main__ import palindrom2", number=10000))
+print("My_solution         : ",
+      timeit.timeit('palindrom("Go hang a salami - \
+                    I\'m a lasagna hog"*10000)',
+                    setup="from __main__ import palindrom", number=100))
+print("instructor_solution : ",
+      timeit.timeit('palindrom2("Go hang a salami - \
+                    I\'m a lasagna hog"*10000)',
+                    setup="from __main__ import palindrom2", number=100))
