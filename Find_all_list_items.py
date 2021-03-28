@@ -50,13 +50,16 @@ print(index_all2.__doc__)
 print(index_all2([[[1, 2, 3], 2, [1, 3]], [1, 2, 3]], 2))
 
 # prepared simple
-List = [[[random.randint(1,100)]*random.randint(1,100)]*random.randint(1,100)]
-Item = random.randint(1,100)
+List = [[random.randint(1, 100) for i in range(random.randint(1, 100))]
+        for j in range(random.randint(1, 100))]
+Item = random.randint(1, 100)
 
 # compare the performance
 print("My_solution         : ",
       timeit.timeit("index_all(List,Item)",
-                    setup="from __main__ import index_all, List, Item", number=100))
+                    setup="from __main__ import index_all, List, Item",
+                    number=100))
 print("instructor_solution : ",
       timeit.timeit("index_all2(List,Item)",
-                    setup="from __main__ import index_all2, List, Item", number=100))
+                    setup="from __main__ import index_all2, List, Item",
+                    number=100))
