@@ -1,6 +1,6 @@
 """
     this script is for solving the chalenge:
-        Sort a string
+        Find_all_list_items
     from:
         Python Code Challenges
     link:

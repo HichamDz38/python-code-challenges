@@ -8,23 +8,24 @@
 """
 import timeit  # this module to compare between the solutions
 import time
-
+import random
 
 def wait():
     """My solution before seening the instuctor solution"""
-    print("your target time is 4\nseconds.")
+    x_time = random.randint(2,4)
+    print("your target time is {}\nseconds.".format(x_time))
     print(" ---Press Enter to Begin---")
     input()
     t1 = time.time()
-    print("...Press Enter again after\n4 seconds...")
+    print("...Press Enter again after\n{} seconds...".format(x_time))
     input()
     t2 = time.time()
     result = t2-t1
     print("Elapsed time: {:.3f} seconds".format(result))
-    if result < 4:
-        print('({:.3f} seconds too fast)'.format(4-result))
-    elif result > 4:
-        print('({:.3f} seconds too slow)'.format(result-4))
+    if result < x_time:
+        print('({:.3f} seconds too fast)'.format(x_time-result))
+    elif result >x_time:
+        print('({:.3f} seconds too slow)'.format(result-x_time))
     else:
         print("amazing")
 
