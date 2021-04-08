@@ -34,6 +34,14 @@ def simulation2(*dice, num_trials=1_000_000):
     """
     return counts
 
+def simulation3(*args):
+    '''my solution after seeing the instructor solution'''
+    # initialize the results holder DS
+    results = {i: 0 for i in range(len(args), sum(args)+1)}
+    for sample in range(10**6):
+        results[sum((random.randint(1, arg) for arg in args))] += 1/10**6
+    return results
+
 
 # test the solutions
 print(simulation.__doc__)
@@ -41,9 +49,13 @@ results = simulation(4, 6, 6)
 for result in results:
     print("{:2} {:.2%}".format(result, results[result]))
 print(simulation2.__doc__)
-outcome = simulation2(4, 6, 6)
+counts = simulation2(4, 6, 6)
 for outcome in range(len((4, 6, 6)), sum((4, 6, 6))+1):
     print('{}\t{:0.2f}%'.format(outcome, counts[outcome]*100/1_000_000))
+print(simulation3.__doc__)
+results = simulation3(4, 6, 6)
+for result in results:
+    print("{:2} {:.2%}".format(result, results[result]))
 
 
 # compare the performance
@@ -54,4 +66,8 @@ print("My_solution         : ",
 print("instructor_solution : ",
       timeit.timeit("simulation2(4, 6, 6)",
                     setup="from __main__ import simulation2",
+                    number=10))
+print("My_solution2         : ",
+      timeit.timeit("simulation3(4, 6, 6)",
+                    setup="from __main__ import simulation3",
                     number=10))
