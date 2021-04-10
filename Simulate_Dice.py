@@ -1,6 +1,6 @@
 """
     this script is for solving the chalenge:
-        Play_the_waiting_game
+        Simulate dice
     from:
         Python Code Challenges
     link:

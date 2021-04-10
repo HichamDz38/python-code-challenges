@@ -1,3 +1,11 @@
+"""
+    this script is for solving the chalenge:
+        Play_the_waiting_game
+    from:
+        Python Code Challenges
+    link:
+        https://www.linkedin.com/learning/python-code-challenges
+"""
 from playsound import playsound
 import time
 

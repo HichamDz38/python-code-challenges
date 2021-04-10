@@ -1,10 +1,5 @@
-"Exervise File"\\*
-"Exervise File"/*
-"Exervise File"/*
-/"Exervise File"/*
-//"Exervise File"//*
-//"Exervise File"
 *.wav
 *.txt
-
+*/
 /*
+!*.py
