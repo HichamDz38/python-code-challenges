@@ -9,19 +9,19 @@
 import timeit  # this module to compare between the solutions
 import random
 
-def check(puzzel):
+def check(grid):
     """this function will check if the provided puzzel is correct"""
     for row in grid:
-        R = ''.join(row).replace('0','')
+        R = row
         for r in R:
-            if R.count(r)>1:
+            if r!=0 and R.count(r)>1:
                 return False
     gridp = list(zip(*grid))
     
     for row in gridp:
-        R = ''.join(row).replace('0','')
+        R = row
         for r in R:
-            if R.count(r)>1:
+            if r!=0 and R.count(r)>1:
                 return False
     groups = []
     for i in range(3):
@@ -29,9 +29,9 @@ def check(puzzel):
             groups.append([G[j*3:j*3+3] for G in grid[i*3:i*3+3]])
     groups = list(map(lambda x:x[0]+x[1]+x[2],groups))
     for g in groups:
-        R = ''.join(g).replace('0','')
+        R = g
         for r in R:
-            if R.count(r)>1:
+            if r!=0 and R.count(r)>1:
                 return False
     return True
 
@@ -49,7 +49,8 @@ def solve(puzzel):
     """my solution before seen the  instructor's solution"""
 
     if is_full(puzzel):
-        return check(puzzel)
+        if check(puzzel):
+            return puzzel
 
     for r in range(9):
         for c in range(9):
@@ -76,4 +77,14 @@ puzzel = [[0,0,1,0,0,0,0,0,0],
           [3,0,2,7,6,0,9,8,0],
           [0,6,4,9,0,3,0,0,1],
           [9,8,0,5,2,1,0,6,0]]
+
+puzzel = [[1,0,3,4,5,6,7,8,9],
+          [4,5,0,7,8,9,1,2,3],
+          [7,8,9,1,2,3,4,5,6],
+          [2,3,4,5,6,0,8,9,1],
+          [5,6,7,8,9,1,2,3,4],
+          [8,9,1,2,3,4,5,6,7],
+          [3,4,5,0,7,8,9,1,2],
+          [6,7,8,9,1,2,3,0,0],
+          [9,1,2,3,4,5,6,7,0]]
 print(solve(puzzel))
