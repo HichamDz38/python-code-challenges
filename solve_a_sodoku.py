@@ -8,6 +8,9 @@
 """
 import timeit  # this module to compare between the solutions
 import random
+import logging
+logging.basicConfig(level=logging.DEBUG)
+
 
 def check(grid):
     """this function will check if the provided puzzel is correct"""
@@ -15,6 +18,8 @@ def check(grid):
         R = row
         for r in R:
             if r!=0 and R.count(r)>1:
+                logging.debug('row conflict',r)
+                logging.debug(R)
                 return False
     gridp = list(zip(*grid))
     
@@ -22,6 +27,8 @@ def check(grid):
         R = row
         for r in R:
             if r!=0 and R.count(r)>1:
+                logging.debug('column conflict',r)
+                logging.debug(R)
                 return False
     groups = []
     for i in range(3):
@@ -32,6 +39,8 @@ def check(grid):
         R = g
         for r in R:
             if r!=0 and R.count(r)>1:
+                logging.debug('inner grid coflect',r)
+                logging.debug(R)
                 return False
     return True
 
@@ -56,11 +65,11 @@ def solve(puzzel):
         for c in range(9):
             if puzzel[r][c]==0:
                 for n in range(1,10):
-                    if n not in puzzel[r]:
-                        new_puzzel = [i for i in puzzel]
-                        new_puzzel[r][c] = n
+                    new_puzzel = [i for i in puzzel]
+                    new_puzzel[r][c] = n
+                    if check(new_puzzel):
                         result = solve(new_puzzel)
-                        if result and check(result):
+                        if result :
                             return result
                 return False
     return False
@@ -88,7 +97,7 @@ puzzel = [[1,0,3,4,5,6,7,8,9],
           [6,7,8,9,1,2,3,0,0],
           [9,1,2,3,4,5,6,7,0]]
 
-puzzel = [[2,3,0,4,1,5,0,6,8],
+puzzel =  [[2,3,0,4,1,5,0,6,8],
            [0,8,0,2,3,6,5,1,9],
            [1,6,0,9,8,7,2,3,4],
            [3,1,7,0,9,4,0,2,5],
